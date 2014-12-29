@@ -17,4 +17,6 @@ public interface Intf {
 
     void m6();
     void m7();
+
+    void m8();
 }
