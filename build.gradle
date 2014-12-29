@@ -21,14 +21,22 @@ scmVersion {
 group = 'gradletest'
 version = scmVersion.version
 
-
-repositories {
-    mavenCentral()
-
-    maven {
-        url "http://localhost:8081/nexus/content/groups/public"
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
     }
 }
+
+publishing {
+    repositories {
+        maven {
+            url "http://localhost:8081/nexus/content/groups/public"
+        }
+    }
+}
+
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
