@@ -4,7 +4,6 @@
 public interface Intf {
     void i();
 
-
     void m();
 
     void m1();
