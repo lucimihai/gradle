@@ -20,5 +20,5 @@ public interface Intf {
 
     void m8();
 
-    void m8();
+
 }
