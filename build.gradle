@@ -33,7 +33,16 @@ publishing {
     repositories {
         maven {
             url "http://localhost:8081/nexus/content/groups/public"
-            authentication userName: "admin", password: "admin123"
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://localhost:8081/nexus/content/groups/public") {
+                authentication(userName: "admin", password: "admin123")
+            }
         }
     }
 }
