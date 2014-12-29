@@ -18,7 +18,7 @@ scmVersion {
     createReleaseCommit true
 }
 
-group = 'gradletest'
+group = 'com.gradle'
 version = scmVersion.version
 
 configurations {
