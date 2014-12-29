@@ -3,6 +3,7 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.8
 
@@ -16,12 +17,16 @@ scmVersion {
     createReleaseCommit true
 }
 
-group = 'gradletest.build'
+group = 'gradletest'
 version = scmVersion.version
 
 
 repositories {
     mavenCentral()
+
+    maven {
+        url "http://localhost:8081/nexus/content/groups/public"
+    }
 }
 
 dependencies {
