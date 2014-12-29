@@ -3,4 +3,7 @@
  */
 public interface Intf {
     void i();
+
+
+    void m();
 }
