@@ -6,6 +6,6 @@ public interface Intf {
 
     void m();
 
-    void m1();
+    void m2();
 
 }
