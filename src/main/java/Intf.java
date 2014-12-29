@@ -8,4 +8,5 @@ public interface Intf {
     void m();
 
     void m1();
+
 }
