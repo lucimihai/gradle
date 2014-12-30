@@ -7,9 +7,15 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'sonar-runner'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
 
+
+jacoco {
+    toolVersion = "0.7.1.201405082137"
+    //reportsDir = file("$buildDir/customJacocoReportDir")
+}
 
 scmVersion {
     tag {
