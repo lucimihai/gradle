@@ -1,13 +1,21 @@
 plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.0.0'
     id 'maven'
+    id 'sonar-runner'
 }
 
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'sonar-runner'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
 
+
+jacoco {
+    toolVersion = "0.7.1.201405082137"
+    //reportsDir = file("$buildDir/customJacocoReportDir")
+}
 
 scmVersion {
     tag {
@@ -52,6 +60,25 @@ uploadArchives {
     }
 }
 
+def testResultsDir = "$buildDir/test-results/"
+def sonarURL="http://localhost:9000"
+
+sonarRunner {
+    sonarProperties {
+        property "sonar.projectName", "${project.name}"
+        property "sonar.projectKey", "${project.name}"
+        property "sonar.junit.reportsPath", testResultsDir
+       // logger.info("${sonarJdbcUrl}    ${sonarJdbcDriverClassName}  ${sonarJdbcUsername}  ${sonarJdbcPassword} ")
+        // Address of SonarQube server
+        property "sonar.host.url", "${sonarURL}"
+
+        // SonarQube stores the test results in this database
+        //property "sonar.jdbc.url", "${sonarJdbcUrl}"
+        //property "sonar.jdbc.driverClassName", "${sonarJdbcDriverClassName}"
+        //property "sonar.jdbc.username", "${sonarJdbcUsername}"
+        //property "sonar.jdbc.password", "${sonarJdbcPassword}"
+    }
+}
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
